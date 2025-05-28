@@ -1,0 +1,17 @@
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            let pagina = this.getAttribute("href");
+
+            if (pagina.includes(".html")) {
+                fetch(pagina)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById("contenido").innerHTML = data;
+                    })
+                    .catch(error => console.error("Error al cargar la página:", error));
+            }
+        });
+    });
+});
