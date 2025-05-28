@@ -114,3 +114,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 </style>
 
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const productos = document.querySelectorAll(".producto");
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const cantidad = document.getElementById("cantidad");
+    const cerrarModal = document.querySelector(".close");
+
+    productos.forEach(producto => {
+        producto.querySelector(".ver-disponibilidad").addEventListener("click", function () {
+            modalTitle.textContent = producto.getAttribute("data-nombre");
+            cantidad.textContent = producto.getAttribute("data-disponibilidad");
+            modal.style.display = "block";
+        });
+    });
+
+    cerrarModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    document.getElementById("pedir").addEventListener("click", function () {
+        alert("Pedido realizado correctamente.");
+        modal.style.display = "none";
+    });
+
+    document.getElementById("cancelar").addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+});
+
+
